@@ -5,14 +5,14 @@
 
 using namespace std;
 
-CovidData::CovidData(string date,string stateInitials,string cityName,string cityCode,int caseCount,int deathCount)
+CovidData::CovidData()
 {
-    this->date = date;
-    this->stateInitials = stateInitials;
-    this->cityName = cityName;
-    this->cityCode = cityCode;
-    this->caseCount = caseCount;
-    this->deathCount = deathCount;
+    this->date = "";
+    this->stateInitials = "";
+    this->cityName = "";
+    this->cityCode = "";
+    this->caseCount = 0;
+    this->deathCount = 0;
 }
 
 CovidData::~CovidData(){}
@@ -45,4 +45,44 @@ int CovidData::getCaseCount()
 int CovidData::getDeathCount()
 {
     return this->deathCount;
+}
+
+void CovidData::setDate(string date)
+{
+    this->date = date;
+}
+
+void CovidData::setStateInitials(string stateInitials)
+{
+    this->stateInitials = stateInitials;
+}
+
+void CovidData::setCityName(string cityName)
+{
+    this->cityName = cityName;
+}
+
+void CovidData::setCityCode(string cityCode)
+{
+    this->cityCode = cityCode;
+}
+
+void CovidData::setCaseCount(int caseCount)
+{
+    this->caseCount = caseCount;
+}
+
+void CovidData::setDeathCount(int deathCount)
+{
+    this->deathCount = deathCount;
+}
+
+void CovidData::setData(string date,string stateInitials,string cityName,string cityCode,int caseCount,int deathCount)
+{
+    this->date = date;
+    this->stateInitials = stateInitials;
+    this->cityName = cityName;
+    this->cityCode = cityCode;
+    this->caseCount = caseCount;
+    this->deathCount = deathCount;   
 }

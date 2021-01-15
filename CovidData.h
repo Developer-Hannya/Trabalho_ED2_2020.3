@@ -18,7 +18,7 @@ private:
     int deathCount;
 
 public:
-    CovidData(string date,string stateInitials,string cityName,string cityCode,int caseCount,int deathCount);
+    CovidData();
     ~CovidData();
 
     string getDate();
@@ -27,6 +27,15 @@ public:
     string getCityCode();
     int getCaseCount();
     int getDeathCount();
+    
+    void setDate(string date);
+    void setStateInitials(string stateInitials);
+    void setCityName(string cityName);
+    void setCityCode(string cityCode);
+    void setCaseCount(int caseCount);
+    void setDeathCount(int deathCount);
+
+    void setData(string date,string stateInitials,string cityName,string cityCode,int caseCount,int deathCount);
 };
 
 #endif
