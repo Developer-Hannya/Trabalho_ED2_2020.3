@@ -129,3 +129,43 @@ void Sorts::preProcessCovidData(vector<CovidData> &data)
     mergeSortCovidDatabyCityStatePair(data,0,data.size() - 1);
     convertCumulativeToDiary(data);
 }
+
+// Merge Sort pós pré processamento
+void Sorts::merge(vector<CovidData> &data, int init, int mid, int end) 
+{
+    int i = init;
+    int j = mid;
+    vector<CovidData> aux;
+
+    while(i < mid && j < end)
+    {
+        if(data[i].getStateInitials() + data[i].getCityName() < data[j].getStateInitials() + data[j].getCityName())
+        {
+            aux.push_back(data[i]);
+            i++;
+        }
+        else
+        {
+            aux.push_back(data[j]);
+            j++;
+        }
+    }
+
+    while (i < mid)
+    {
+        aux.push_back(data[i]);
+        i++;
+    }
+    while (j < end)
+    {
+        aux.push_back(data[j]);
+        j++;
+    }
+    
+    for(int k = init; k < end;k++)
+    {
+        data[k] = aux[k - init];
+    }
+}
+
+//}
