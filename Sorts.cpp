@@ -139,7 +139,7 @@ void Sorts::merge(vector<CovidData> &data, int init, int mid, int end)
 
     while(i < mid && j < end)
     {
-        if(data[i].getStateInitials() + data[i].getCityName() < data[j].getStateInitials() + data[j].getCityName())
+        if(data[i].getCaseCount() < data[j].getCaseCount())
         {
             aux.push_back(data[i]);
             i++;
