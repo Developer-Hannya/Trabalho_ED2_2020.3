@@ -63,15 +63,25 @@ private:
     void convertCumulativeToDiary(vector<CovidData> &data);
 
     /**
-     * Função de intercalação para o algoritmo MergeSort pós pré processamento
+     * Função de intercalação para o algoritmo MergeSort pós-processamento
      * 
      * @param vector<CovidData> data
-     * @param int p
-     * @param int q
-     * @param int r
+     * @param int init
+     * @param int mid
+     * @param int end
      * @return void
     */
    void merge (vector<CovidData> &data, int init, int mid, int end);
+
+    /**
+     * Função recursiva do algoritmo MergeSort pós-processamento
+     * 
+     * @param vector<CovidData> data
+     * @param int init
+     * @param int end
+     * @return void
+    */
+   void mergeSort(vector<CovidData> &data, int init, int end);
 
 public:
     /**

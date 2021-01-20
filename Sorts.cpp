@@ -130,7 +130,7 @@ void Sorts::preProcessCovidData(vector<CovidData> &data)
     convertCumulativeToDiary(data);
 }
 
-// Merge Sort pós pré processamento
+// Merge Sort pós processamento
 void Sorts::merge(vector<CovidData> &data, int init, int mid, int end) 
 {
     int i = init;
@@ -165,6 +165,17 @@ void Sorts::merge(vector<CovidData> &data, int init, int mid, int end)
     for(int k = init; k < end;k++)
     {
         data[k] = aux[k - init];
+    }
+}
+
+void Sorts::mergeSort(vector<CovidData> &data, int init, int end)
+{
+    if(init < end - 1)
+    {
+        int mid = (init + end)/2;
+        mergeSort(data,init,mid);
+        mergeSort(data,mid,end);
+        merge(data,init,mid,end);
     }
 }
 
