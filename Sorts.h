@@ -65,27 +65,7 @@ private:
     */
     void convertCumulativeToDiary(vector<CovidData> &data);
 
-    /**
-     * Função de intercalação para o algoritmo MergeSort
-     * 
-     * @param vector<CovidData> data
-     * @param int init
-     * @param int mid
-     * @param int end
-     * @return void
-    */
-   void merge (vector<CovidData> &data, int init, int mid, int end);
-
-    /**
-     * Função recursiva do algoritmo MergeSort pós-processamento, que ordena M vezes um conjunto de N linhas do arquivo 
-     * brazil_covid19_cities_processado utilizando como chave de ordenação o numero de casos.
-     * 
-     * @param vector<CovidData> data
-     * @param int init
-     * @param int end
-     * @return void
-    */
-   void mergeSort(vector<CovidData> &data, int init, int end);
+   
     
     
 
@@ -114,9 +94,30 @@ public:
      * Função que calcula o tempo de execução do mergeSort
      * @return auto
     */
-   void mergeSortBenchmark(vector<CovidData> &data, vector<CovidData> &extractedData);
+   
+    /**
+     * Função de intercalação para o algoritmo MergeSort
+     * 
+     * @param vector<CovidData> data
+     * @param int init
+     * @param int mid
+     * @param int end
+     * @return void
+    */
+   void merge (vector<CovidData> &data, int init, int mid, int end);
+
+    /**
+     * Função recursiva do algoritmo MergeSort pós-processamento, que ordena M vezes um conjunto de N linhas do arquivo 
+     * brazil_covid19_cities_processado utilizando como chave de ordenação o numero de casos.
+     * 
+     * @param vector<CovidData> data
+     * @param int init
+     * @param int end
+     * @return void
+    */
+   void mergeSort(vector<CovidData> &data, int init, int end);
 //
-   vector<CovidData> extractNfromFile(vector<CovidData> &data, vector<CovidData> &extractedData, int n);
+   
 };
 
 #endif

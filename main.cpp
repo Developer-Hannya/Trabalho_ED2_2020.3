@@ -3,6 +3,7 @@
 #include <vector>
 #include "CovidData.h"
 #include "Sorts.h"
+#include "Benchmark.h"
 #include "DataReader.h"
 #include <chrono>
 
@@ -15,6 +16,7 @@ int main()
     vector<CovidData> extractedData;
     DataReader reader;
     Sorts sort;
+    Benchmark bench;
     bool run = true;
     cout << "Trabalho de Estrutura de Dados II" << endl;
 
@@ -44,7 +46,7 @@ int main()
             cout << "Lendo arquivo..." << endl;
             data = reader.readCovidDatafromFile(fileName);
             cout << "Executando mergeSort..." << endl;
-            sort.mergeSortBenchmark(data, extractedData);
+            bench.mergeSortBenchmark(data, extractedData, 30);
             cout << "Exportando dados..." << endl;
             reader.exportExtractedCovidDataToFile(data, extractedData);
         default:

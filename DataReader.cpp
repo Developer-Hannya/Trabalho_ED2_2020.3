@@ -56,6 +56,7 @@ void DataReader::exportPreProcessedCovidDataToFile(vector<CovidData> &data)
     outfile.close();
 }
 
+// Para testar se o rand funciona
 void DataReader::exportExtractedCovidDataToFile(vector<CovidData> &data, vector<CovidData> &extractedData)
 {
     ofstream outfile("brazil_covid19_cities_extracted.csv");
