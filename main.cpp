@@ -42,7 +42,7 @@ int main()
             cout << "Lendo arquivo..." << endl;
             data = reader.readCovidDatafromFile(fileName);
             cout << "Pré-processando dados..." << endl;
-            sort.calculaTempoMergeSort(data);
+            sort.mergeSortBenchmark(data);
             cout << "Exportando dados..." << endl;
             reader.exportPreProcessedCovidDataToFile(data);
         default:

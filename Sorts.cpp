@@ -181,7 +181,7 @@ void Sorts::mergeSort(vector<CovidData> &data, int init, int end)
     }
 }
 
-void Sorts::calculaTempoMergeSort(vector<CovidData> &data)
+void Sorts::mergeSortBenchmark(vector<CovidData> &data)
 {
     auto start = chrono::high_resolution_clock::now();
     mergeSort(data, 0, data.size() -1);

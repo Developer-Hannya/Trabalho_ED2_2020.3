@@ -111,7 +111,7 @@ public:
      * Função que calcula o tempo de execução do mergeSort
      * @return auto
     */
-   void calculaTempoMergeSort(vector<CovidData> &data);
+   void mergeSortBenchmark(vector<CovidData> &data);
 };
 
 #endif
