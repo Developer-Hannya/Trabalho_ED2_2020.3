@@ -6,11 +6,13 @@
 #include "DataReader.h"
 #include <chrono>
 
+
 using namespace std;
 
 int main()
 {
     vector<CovidData> data;
+    vector<CovidData> extractedData;
     DataReader reader;
     Sorts sort;
     bool run = true;
@@ -41,10 +43,10 @@ int main()
             cin >> fileName;
             cout << "Lendo arquivo..." << endl;
             data = reader.readCovidDatafromFile(fileName);
-            cout << "Pré-processando dados..." << endl;
-            sort.mergeSortBenchmark(data);
+            cout << "Executando mergeSort..." << endl;
+            sort.mergeSortBenchmark(data, extractedData);
             cout << "Exportando dados..." << endl;
-            reader.exportPreProcessedCovidDataToFile(data);
+            reader.exportExtractedCovidDataToFile(data, extractedData);
         default:
             cout << "Encerrando execução..." << endl;
             run = false;

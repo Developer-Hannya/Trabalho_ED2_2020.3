@@ -8,6 +8,7 @@
 #include <vector>
 #include "CovidData.h"
 
+
 using namespace std;
 
 //Classe com as funções de leitura e exportação de dados em arquivos
@@ -42,6 +43,9 @@ public:
      * @return void
     */
     void exportPreProcessedCovidDataToFile(vector<CovidData> &data);
+// 
+    void exportExtractedCovidDataToFile(vector<CovidData> &data, vector<CovidData> &extractedData);
+    
 };
 
 #endif

@@ -1,6 +1,5 @@
 #include "Sorts.h"
-#include <chrono>
-#include <bits/stdc++.h> 
+
 
 Sorts::Sorts() {}
 
@@ -181,16 +180,28 @@ void Sorts::mergeSort(vector<CovidData> &data, int init, int end)
     }
 }
 
-void Sorts::mergeSortBenchmark(vector<CovidData> &data)
+void Sorts::mergeSortBenchmark(vector<CovidData> &data, vector<CovidData> &extractedData)
 {
+    extractedData = extractNfromFile(data, extractedData);
     auto start = chrono::high_resolution_clock::now();
-    mergeSort(data, 0, data.size() -1);
+    mergeSort(extractedData, 0, extractedData.size() -1);
     auto end = chrono::high_resolution_clock::now();
     double time_taken = chrono::duration_cast<chrono::nanoseconds>(end - start).count();
     time_taken *= 1e-9;
     cout << "O tempo de execução do MergeSort neste arquivo é de: " << fixed
          << time_taken << setprecision(9);
     cout << " seg" << endl;
+}
+
+vector<CovidData> Sorts::extractNfromFile(vector<CovidData> &data, vector<CovidData> &extractedData) {
+    int index;
+    // n = 10 test
+    for (int i =0; i < 10; i++) {
+        index = rand() % (data.size() + 1 - 0) + 0;
+        extractedData.push_back( data[index]);
+    }
+
+    return extractedData;
 }
 
 //}

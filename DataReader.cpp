@@ -55,3 +55,14 @@ void DataReader::exportPreProcessedCovidDataToFile(vector<CovidData> &data)
     }
     outfile.close();
 }
+
+void DataReader::exportExtractedCovidDataToFile(vector<CovidData> &data, vector<CovidData> &extractedData)
+{
+    ofstream outfile("brazil_covid19_cities_extracted.csv");
+    for(int i = 0;i < extractedData.size();i++)
+    {
+        outfile << extractedData[i].getDate() << "," << extractedData[i].getStateInitials() << "," << extractedData[i].getCityName() << "," << extractedData[i].getCityCode() << "," << extractedData[i].getCaseCount() << "," << extractedData[i].getDeathCount() << endl;
+    }
+    outfile.close();
+}
+

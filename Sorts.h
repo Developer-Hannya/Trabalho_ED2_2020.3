@@ -4,6 +4,9 @@
 #include <iostream>
 #include <vector>
 #include "CovidData.h"
+#include <chrono>
+#include <bits/stdc++.h> 
+#include <cstdlib>
 
 //Classe com as funções de ordenação de dados
 class Sorts
@@ -111,7 +114,9 @@ public:
      * Função que calcula o tempo de execução do mergeSort
      * @return auto
     */
-   void mergeSortBenchmark(vector<CovidData> &data);
+   void mergeSortBenchmark(vector<CovidData> &data, vector<CovidData> &extractedData);
+//
+   vector<CovidData> extractNfromFile(vector<CovidData> &data, vector<CovidData> &extractedData);
 };
 
 #endif
