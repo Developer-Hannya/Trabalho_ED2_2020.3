@@ -41,14 +41,7 @@ int main()
             cout << "Dados pré-processados e exportado para brazil_covid19_cities_processado.csv dentro da pasta do projeto." << endl << endl;
             break;
         case 2:
-            cout << "Digite o nome e/ou caminho do do arquivo a ser lido: ";
-            cin >> fileName;
-            cout << "Lendo arquivo..." << endl;
-            data = reader.readCovidDatafromFile(fileName);
-            cout << "Executando mergeSort..." << endl;
-            bench.mergeSortBenchmark(data, extractedData, 15);
-            cout << "Exportando dados..." << endl;
-            reader.exportExtractedCovidDataToFile(data, extractedData);
+            bench.exec();
         default:
             cout << "Encerrando execução..." << endl;
             run = false;

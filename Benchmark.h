@@ -13,14 +13,24 @@ class Benchmark {
   double mediaComp;
   double mediaMov;
   double time_taken;
+  vector<double> runtime;
+  vector<double> comp;
+  vector<double> mov;
+
 
 // Extrai N linhas randomicas do arquivo processado
   vector<CovidData> extractNfromFile(vector<CovidData> &data, vector<CovidData> &extractedData, int n);
 
+  void calculaMedias(vector<double> runtime);
+
+  void exportMetricsToTxt(vector<double> runtime); 
+
+  void mergeSortBenchmark(vector<CovidData> &data, vector<CovidData> &extractedData, int n, vector<double> &runtime);
+ 
   public:
 // Calcula runtime de um mergesort em um conjunto de tamanho N 
-  void mergeSortBenchmark(vector<CovidData> &data, vector<CovidData> &extractedData, int n);
-  
+  void exec();
+
   double getMediaRuntime();
 
   void setMediaRuntime(double mediaRuntime);
