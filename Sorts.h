@@ -63,7 +63,7 @@ private:
     void convertCumulativeToDiary(vector<CovidData> &data);
 
     /**
-     * Função de intercalação para o algoritmo MergeSort pós-processamento
+     * Função de intercalação para o algoritmo MergeSort
      * 
      * @param vector<CovidData> data
      * @param int init
@@ -74,7 +74,8 @@ private:
    void merge (vector<CovidData> &data, int init, int mid, int end);
 
     /**
-     * Função recursiva do algoritmo MergeSort pós-processamento
+     * Função recursiva do algoritmo MergeSort pós-processamento, que ordena M vezes um conjunto de N linhas do arquivo 
+     * brazil_covid19_cities_processado utilizando como chave de ordenação o numero de casos.
      * 
      * @param vector<CovidData> data
      * @param int init
@@ -82,6 +83,8 @@ private:
      * @return void
     */
    void mergeSort(vector<CovidData> &data, int init, int end);
+    
+    
 
 public:
     /**
@@ -103,6 +106,12 @@ public:
      * @return void
     */
     void preProcessCovidData(vector<CovidData> &data);
+
+    /**
+     * Função que calcula o tempo de execução do mergeSort
+     * @return auto
+    */
+   void calculaTempoMergeSort(vector<CovidData> &data);
 };
 
 #endif
