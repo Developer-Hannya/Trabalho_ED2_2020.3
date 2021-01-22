@@ -44,7 +44,6 @@ public:
     */
     void exportPreProcessedCovidDataToFile(vector<CovidData> &data);
 // 
-    void exportExtractedCovidDataToFile(vector<CovidData> &data, vector<CovidData> &extractedData);
     
 };
 

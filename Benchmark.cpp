@@ -28,12 +28,22 @@ void Benchmark::exec() {
   data = reader.readCovidDatafromFile(fileName);
   cout << "Executando benchmark..." << endl;
 
-  mergeSortBenchmark(data, extractedData, 10, runtime);
-  mergeSortBenchmark(data, extractedData, 50, runtime);
   mergeSortBenchmark(data, extractedData, 100, runtime);
+  mergeSortBenchmark(data, extractedData, 500, runtime);
+  mergeSortBenchmark(data, extractedData, 1000, runtime);
 
   calculaMedias(runtime);
   exportMetricsToTxt(runtime);
+}
+
+void Benchmark::exportExtractedCovidDataToFile(vector<CovidData> &data, vector<CovidData> &extractedData)
+{
+    ofstream outfile("brazil_covid19_cities_extracted.csv");
+    for(int i = 0;i < extractedData.size();i++)
+    {
+        outfile << extractedData[i].getDate() << "," << extractedData[i].getStateInitials() << "," << extractedData[i].getCityName() << "," << extractedData[i].getCityCode() << "," << extractedData[i].getCaseCount() << "," << extractedData[i].getDeathCount() << endl;
+    }
+    outfile.close();
 }
 
 void Benchmark::mergeSortBenchmark(vector<CovidData> &data, vector<CovidData> &extractedData, int n, vector<double> &runtime)
@@ -49,7 +59,7 @@ void Benchmark::mergeSortBenchmark(vector<CovidData> &data, vector<CovidData> &e
     cout << "O tempo de execução do MergeSort para N = " << extractedData.size() -1 << "é de: " << fixed
          << getTimeTaken() << setprecision(9);
     cout << " seg" << endl;
-
+    exportExtractedCovidDataToFile(data, extractedData);
     runtime.push_back(getTimeTaken());
 }
 

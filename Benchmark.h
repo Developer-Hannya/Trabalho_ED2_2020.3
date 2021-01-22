@@ -22,6 +22,8 @@ class Benchmark {
   vector<CovidData> extractNfromFile(vector<CovidData> &data, vector<CovidData> &extractedData, int n);
 
   void calculaMedias(vector<double> runtime);
+  
+  void exportExtractedCovidDataToFile(vector<CovidData> &data, vector<CovidData> &extractedData);
 
   void exportMetricsToTxt(vector<double> runtime); 
 
