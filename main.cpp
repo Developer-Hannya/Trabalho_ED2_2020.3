@@ -46,7 +46,7 @@ int main()
             cout << "Lendo arquivo..." << endl;
             data = reader.readCovidDatafromFile(fileName);
             cout << "Executando mergeSort..." << endl;
-            bench.mergeSortBenchmark(data, extractedData, 30);
+            bench.mergeSortBenchmark(data, extractedData, 15);
             cout << "Exportando dados..." << endl;
             reader.exportExtractedCovidDataToFile(data, extractedData);
         default:
