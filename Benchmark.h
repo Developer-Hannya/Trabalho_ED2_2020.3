@@ -13,9 +13,7 @@ class Benchmark {
   double mediaComp;
   double mediaMov;
   double time_taken;
-  vector<double> runtime;
-  vector<double> comp;
-  vector<double> mov;
+ 
 
 
 // Extrai N linhas randomicas do arquivo processado

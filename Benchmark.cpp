@@ -8,8 +8,6 @@ Benchmark::Benchmark() {
   double mediaMov = 0;
   double time_taken = 0;
   
-  vector<double> comp;
-  vector<double> mov;
   
 }
 
@@ -19,6 +17,8 @@ void Benchmark::exec() {
   vector<CovidData> data;
   vector<CovidData> extractedData;
   vector<double> runtime;
+  vector<double> comp;
+  vector<double> mov;
   DataReader reader;
   string fileName;
 
