@@ -182,7 +182,8 @@ void Sorts::mergeSort(vector<CovidData> &data, int init, int end)
 
 void Sorts::mergeSortBenchmark(vector<CovidData> &data, vector<CovidData> &extractedData)
 {
-    extractedData = extractNfromFile(data, extractedData);
+    int n = 10; // n = {10k, 50k, 100k, 500k, 1kk}
+    extractedData = extractNfromFile(data, extractedData, n);
     auto start = chrono::high_resolution_clock::now();
     mergeSort(extractedData, 0, extractedData.size() -1);
     auto end = chrono::high_resolution_clock::now();
@@ -193,10 +194,9 @@ void Sorts::mergeSortBenchmark(vector<CovidData> &data, vector<CovidData> &extra
     cout << " seg" << endl;
 }
 
-vector<CovidData> Sorts::extractNfromFile(vector<CovidData> &data, vector<CovidData> &extractedData) {
-    int index;
-    // n = 10 test
-    for (int i =0; i < 10; i++) {
+vector<CovidData> Sorts::extractNfromFile(vector<CovidData> &data, vector<CovidData> &extractedData, int n) {
+    int index; 
+    for (int i =0; i < n; i++) {
         index = rand() % (data.size() + 1 - 0) + 0;
         extractedData.push_back( data[index]);
     }

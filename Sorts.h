@@ -116,7 +116,7 @@ public:
     */
    void mergeSortBenchmark(vector<CovidData> &data, vector<CovidData> &extractedData);
 //
-   vector<CovidData> extractNfromFile(vector<CovidData> &data, vector<CovidData> &extractedData);
+   vector<CovidData> extractNfromFile(vector<CovidData> &data, vector<CovidData> &extractedData, int n);
 };
 
 #endif

@@ -22,7 +22,7 @@ int main()
     {
         int option;
         string fileName;
-        cout << "Menu:" << endl << "2 - MergeSort por Numero de Casos "<< "1 - Pré-processamento de Dados do Covid-19" << endl << "0 - Fechar execução" << endl;
+        cout << "Menu:" << endl << "2 - MergeSort por Numero de Casos "<< endl << "1 - Pré-processamento de Dados do Covid-19" << endl << "0 - Fechar execução" << endl;
         cout << "Digite uma das opções do menu para execução do programa: ";
         cin >> option;
         switch (option)
