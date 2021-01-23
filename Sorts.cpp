@@ -132,7 +132,7 @@ void Sorts::preProcessCovidData(vector<CovidData> &data)
 }
 
 // Merge Sort pós processamento
-void Sorts::merge(vector<CovidData> &data, int init, int mid, int end)
+void Sorts::merge(vector<CovidData> &data, int init, int mid, int end )
 {
     int i = init;
     int j = mid;

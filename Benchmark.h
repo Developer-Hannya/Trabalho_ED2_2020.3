@@ -9,10 +9,15 @@
 class Benchmark {
   private: 
 
+  double time_taken;
+  double compNum;
+  double movNum;
+
   double mediaRuntime;
   double mediaComp;
   double mediaMov;
-  double time_taken;
+  
+  
  
 
 
@@ -46,6 +51,15 @@ class Benchmark {
   double getTimeTaken();
 
   void setTimeTaken(double time_taken);
+
+  double getCompNum();
+
+  void setCompNum(double compNum);
+
+  double getMovNum();
+
+  void setMovNum(double movNum);
+
 
    /**
      * Construtor da Classe

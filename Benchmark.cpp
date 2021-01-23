@@ -3,11 +3,14 @@
 #include "DataReader.h"
 
 Benchmark::Benchmark() {
+ 
+  double time_taken = 0;
+  double compNum = 0;
+  double movNum = 0;
+
   double mediaRuntime = 0;
   double mediaComp = 0;
   double mediaMov = 0;
-  double time_taken = 0;
-  
   
 }
 
@@ -17,8 +20,6 @@ void Benchmark::exec() {
   vector<CovidData> data;
   vector<CovidData> extractedData;
   vector<double> runtime;
-  vector<double> comp;
-  vector<double> mov;
   DataReader reader;
   string fileName;
 
@@ -96,6 +97,30 @@ void Benchmark::exportMetricsToTxt(vector<double> runtime) {
 
 }
 
+double Benchmark::getTimeTaken() {
+  return this->time_taken;
+}
+
+void Benchmark::setTimeTaken(double time_taken) {
+  this->time_taken = time_taken;
+}
+
+double Benchmark::getCompNum() {
+    return this->compNum;
+  }
+
+void Benchmark::setCompNum(double compNum) {
+    this->compNum = compNum;
+  }
+
+double Benchmark::getMovNum() {
+   return this->movNum;
+  }
+
+void Benchmark::setMovNum(double movNum) {
+  this->movNum = movNum;
+}
+
 double Benchmark::getMediaRuntime() {
   return this->mediaRuntime;
 }
@@ -119,12 +144,3 @@ double Benchmark::getMediaMov(){
 void Benchmark::setMediaMov(double mediaMov){
   this->mediaMov = mediaMov;
 }
-
-double Benchmark::getTimeTaken() {
-  return this->time_taken;
-}
-
-void Benchmark::setTimeTaken(double time_taken) {
-  this->time_taken = time_taken;
-}
-
