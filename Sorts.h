@@ -83,5 +83,16 @@ public:
     */
     void preProcessCovidData(vector<CovidData> &data);
 };
+   int ParticionaQuickSort(vector<CovidData> &data, int init, int end);
 
+    /**
+     * Função recursiva do algoritmo QuickSort 
+     * 
+     * @param vector<CovidData> data
+     * @param int init
+     * @param int end
+     * @return int
+    */
+   void QuickSort(vector<CovidData> &data, int init, int end);
+    //
 #endif
