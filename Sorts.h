@@ -4,13 +4,7 @@
 #include <iostream>
 #include <vector>
 #include "CovidData.h"
-//#include<bits/stdc++.h> 
-
-//estrutura para Nó
-struct Noh {
-    int c; //chave do nó
-    struct Noh *rght, *left; //nó da direita e nó da esquerda, respectivamente
-};
+#include "Node.h"
 
 //Classe com as funções de ordenação de dados
 class Sorts
@@ -69,6 +63,12 @@ private:
     */
     void convertCumulativeToDiary(vector<CovidData> &data);
 
+    // funcoes do Tree Sort
+    Node *newNode(vector<CovidData> &data);
+    void storeTreeSorted(Node *raiz, vector<CovidData> &data, int n);
+    Node* insertNode(Node* noh, vector<CovidData> &data);
+    void treeSort(vector<CovidData> &data, int sizi);    
+
 public:
     /**
      * Construtor da Classe
@@ -89,9 +89,6 @@ public:
      * @return void
     */
     void preProcessCovidData(vector<CovidData> &data);
-
-    //funçao do Tree Sort
-    void treeSort();
 };
 
 #endif

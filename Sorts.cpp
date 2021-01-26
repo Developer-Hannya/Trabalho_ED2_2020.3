@@ -1,4 +1,5 @@
 #include "Sorts.h"
+#include "Node.h"
 
 Sorts::Sorts(){}
 
@@ -130,6 +131,90 @@ void Sorts::preProcessCovidData(vector<CovidData> &data)
     convertCumulativeToDiary(data);
 }
 
-void Sorts::treeSort() {
-    
+// aqui para baixo são as funções do Tree Sort
+
+Node Sorts::newNode(vector<CovidData> &data){
+    Node *n = new Node;
+    n->chave = data;
+    n->left = n->rght = NULL;
+    return n;
+}
+
+/*
+void storeSorted(Node *root, int arr[], int &i) 
+{ 
+    if (root != NULL) 
+    { 
+        storeSorted(root->left, arr, i); 
+        arr[i++] = root->key; 
+        storeSorted(root->right, arr, i); 
+    } 
+} 
+*/
+
+void Sorts::storeTreeSorted(Node *raiz, vector<CovidData> &data, int n) {
+    if(raiz != NULL) {
+        storeTreeSorted(raiz->left, data, n);
+        vector<CovidData>[n++] = raiz->chave;
+        storeTreeSorted(raiz->rght, data, n);
+    }
+}
+
+/*
+    Node* insert(Node* node, int key) 
+    { 
+        /If the tree is empty, return a new Node
+        if (node == NULL) return newNode(key); 
+  
+        /Otherwise, recur down the tree 
+        if (key < node->key) 
+            node->left  = insert(node->left, key); 
+        else if (key > node->key) 
+            node->right = insert(node->right, key); 
+  
+        /return the (unchanged) Node pointer
+        return node; 
+    }    
+    */
+
+Node* Sorts::insertNode(Node* node, vector<CovidData> &data) {
+    if(node == NULL) {
+        return newNode(data);
+    }
+    else {
+        if(data < node->data) {
+            node->left = insertNode(node->left, data);
+        }
+        else if(data > node->data) {
+            node->rght = insertNode(node->rght, data);
+        }
+    }
+    return node;
+}
+
+/*
+void treeSort(int arr[], int n) 
+{ 
+    struct Node *root = NULL; 
+  
+    // Construct the BST 
+    root = insert(root, arr[0]); 
+    for (int i=1; i<n; i++) 
+        root = insert(root, arr[i]); 
+  
+    // Store inoder traversal of the BST 
+    // in arr[] 
+    int i = 0; 
+    storeSorted(root, arr, i); 
+} 
+*/
+
+void Sorts::treeSort(vector<CovidData> &data, int sizi) {
+    Node *raiz = NULL;
+    raiz = insertNode(raiz, data[0]);
+    for (int i = 1; i < sizi; i++) {
+        raiz = insertNode(raiz, data[i]);
+    }
+    int j = 0;
+    storeTreeSorted(raiz, data, j);
 }
