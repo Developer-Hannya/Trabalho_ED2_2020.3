@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include "CovidData.h"
+#include "Benchmark.h"
 
 //Classe com as funções de ordenação de dados
 class Sorts
@@ -62,6 +63,8 @@ private:
     */
     void convertCumulativeToDiary(vector<CovidData> &data);
 
+    void auxBenchmarkMergeSortCovidData(vector<CovidData> &data, int init, int mid, int end, Benchmark *bench);
+
 public:
     /**
      * Construtor da Classe
@@ -82,6 +85,8 @@ public:
      * @return void
     */
     void preProcessCovidData(vector<CovidData> &data);
+
+    void benchmarkMergeSortCovidData(vector<CovidData> &data, int init, int end, Benchmark *bench);
 };
 
 #endif

@@ -129,3 +129,53 @@ void Sorts::preProcessCovidData(vector<CovidData> &data)
     mergeSortCovidDatabyCityStatePair(data,0,data.size() - 1);
     convertCumulativeToDiary(data);
 }
+
+void Sorts::auxBenchmarkMergeSortCovidData(vector<CovidData> &data, int init, int mid, int end, Benchmark *bench)
+{
+    int i = init;
+    int j = mid;
+    vector<CovidData> aux;
+
+    while(i < mid && j < end)
+    {
+        if(data[i].getCaseCount() < data[j].getCaseCount())
+        {
+            aux.push_back(data[i]);
+            i++;
+        }
+        else
+        {
+            aux.push_back(data[j]);
+            j++;
+            bench->incrementMovNumber();
+        }
+        bench->incrementCompNumber();
+    }
+
+    while (i < mid)
+    {
+        aux.push_back(data[i]);
+        i++;
+    }
+    while (j < end)
+    {
+        aux.push_back(data[j]);
+        j++;
+    }
+    
+    for(int k = init; k < end;k++)
+    {
+        data[k] = aux[k - init];
+    }
+}
+
+void Sorts::benchmarkMergeSortCovidData(vector<CovidData> &data, int init, int end, Benchmark *bench)
+{
+    if(init < end - 1)
+    {
+        int mid = (init + end)/2;
+        benchmarkMergeSortCovidData(data,init,mid,bench);
+        benchmarkMergeSortCovidData(data,mid,end,bench);
+        auxBenchmarkMergeSortCovidData(data,init,mid,end,bench);
+    }
+}

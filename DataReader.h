@@ -6,7 +6,10 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <bits/stdc++.h> 
+#include <cstdlib>
 #include "CovidData.h"
+#include "Benchmark.h"
 
 using namespace std;
 
@@ -42,6 +45,11 @@ public:
      * @return void
     */
     void exportPreProcessedCovidDataToFile(vector<CovidData> &data);
+
+    vector<CovidData> readPreProcessedCovidDataFromFile(string filename);
+
+    void exportTestedDataToFile(vector<CovidData> &data);
+    void exportBenchmarkDataToFile(Benchmark *bench);
 };
 
 #endif
