@@ -179,3 +179,49 @@ void Sorts::benchmarkMergeSortCovidData(vector<CovidData> &data, int init, int e
         auxBenchmarkMergeSortCovidData(data,init,mid,end,bench);
     }
 }
+
+int Sorts::auxBenchmarkQuickSortCovidData(vector<CovidData> &data,int init, int end, Benchmark *bench)
+{
+    int i = init;
+    int j = end;
+    int pivot = data[(init + end)/2].getCaseCount();
+
+    do
+    {
+        bench->incrementCompNumber();
+        while(data[i].getCaseCount() < pivot)
+        {
+            i++;
+            bench->incrementCompNumber();
+        }
+
+        bench->incrementCompNumber();
+        while(data[j].getCaseCount() > pivot)
+        {
+            j--;
+            bench->incrementCompNumber();
+        }
+
+        if(i <= j)
+        {
+            swap(data[i],data[j]);
+            bench->incrementMovNumber();
+            i++;
+            j--;
+        }
+
+    }while (i <= j);
+
+    return i;
+    
+}
+
+void Sorts::benchmarkQuickSortCovidData(vector<CovidData> &data, int init, int end, Benchmark *bench)
+{
+    if(end - init > 0)
+    {
+        int mid = auxBenchmarkQuickSortCovidData(data,init,end,bench);
+        benchmarkQuickSortCovidData(data,init,mid - 1,bench);
+        benchmarkQuickSortCovidData(data,mid,end,bench);
+    }
+}

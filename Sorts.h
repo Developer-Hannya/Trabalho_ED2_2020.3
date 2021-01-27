@@ -65,6 +65,8 @@ private:
 
     void auxBenchmarkMergeSortCovidData(vector<CovidData> &data, int init, int mid, int end, Benchmark *bench);
 
+    int auxBenchmarkQuickSortCovidData(vector<CovidData> &data,int init, int end, Benchmark *bench);
+
 public:
     /**
      * Construtor da Classe
@@ -87,6 +89,8 @@ public:
     void preProcessCovidData(vector<CovidData> &data);
 
     void benchmarkMergeSortCovidData(vector<CovidData> &data, int init, int end, Benchmark *bench);
+
+    void benchmarkQuickSortCovidData(vector<CovidData> &data, int init, int end, Benchmark *bench);
 };
 
 #endif
