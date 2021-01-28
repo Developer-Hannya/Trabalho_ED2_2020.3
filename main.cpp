@@ -8,87 +8,87 @@
 using namespace std;
 
 void execMergeSortBenchmark(int nData) {
-        DataReader reader;
-        int comps[5];
-        int movs[5];
-        double runtimes[5];
-        Sorts sort;
-        vector<CovidData> data;
+    DataReader reader;
+    int comps[5];
+    int movs[5];
+    double runtimes[5];
+    Sorts sort;
+    vector<CovidData> data;
 
-        ofstream intro("saidas.txt",ios::app);
-        intro << "Merge Sort - N: " << nData << endl;
-        intro << "Comparações,Movimentos,Tempo de execução" << endl;
-        data = reader.readPreProcessedCovidDataFromFile("brazil_covid19_cities_processado.csv");
-        intro.close();
+    ofstream intro("saidas.txt",ios::app);
+    intro << "Merge Sort - N: " << nData << endl;
+    intro << "Comparações,Movimentos,Tempo de execução" << endl;
+    data = reader.readPreProcessedCovidDataFromFile("brazil_covid19_cities_processado.csv");
+    intro.close();
 
-        for(int i = 0; i < 5; i++)
+    for(int i = 0; i < 5; i++)
+    {
+        srand(i);
+        Benchmark *bench = new Benchmark(nData,data.size());
+        vector<CovidData> benchData;
+        for(int j = 0; j < bench->getRandomDataIndex().size();j++)
         {
-            srand(i);
-            Benchmark *bench = new Benchmark(nData,data.size());
-            vector<CovidData> benchData;
-            for(int j = 0; j < bench->getRandomDataIndex().size();i++)
-            {
-                benchData.push_back(data[bench->getRandomDataIndex()[j]]);
-            }
-            bench->setStartTimeAsNow();
-            sort.benchmarkMergeSortCovidData(benchData,0,benchData.size(),bench);
-            bench->setEndTimeAsNow();
-            bench->generateRuntime();
-            reader.exportBenchmarkDataToFile(bench);
-
-            comps[i] = bench->getCompNumber();
-            movs[i] = bench->getMovNumber();
-            runtimes[i] = bench->getRuntime();
-            delete bench;
+            benchData.push_back(data[bench->getRandomDataIndex()[j]]);
         }
-        float compMedia = (comps[0] + comps[1] + comps[2] + comps[3] + comps[4])/5;
-        float movMedia = (movs[0] + movs[1] + movs[2] + movs[3] + movs[4])/5;
-        double runMedia = (runtimes[0] + runtimes[1] + runtimes[2] + runtimes[3] + runtimes[4])/5;
-        ofstream endline("saidas.txt",ios::app);
-        endline << "Médias: " << compMedia << "," << movMedia << "," << runMedia << endl << endl;
-        endline.close();
+        bench->setStartTimeAsNow();
+        sort.benchmarkMergeSortCovidData(benchData,0,benchData.size(),bench);
+        bench->setEndTimeAsNow();
+        bench->generateRuntime();
+        reader.exportBenchmarkDataToFile(bench);
+
+        comps[i] = bench->getCompNumber();
+        movs[i] = bench->getMovNumber();
+        runtimes[i] = bench->getRuntime();
+        delete bench;
+    }
+    float compMedia = (comps[0] + comps[1] + comps[2] + comps[3] + comps[4])/5;
+    float movMedia = (movs[0] + movs[1] + movs[2] + movs[3] + movs[4])/5;
+    double runMedia = (runtimes[0] + runtimes[1] + runtimes[2] + runtimes[3] + runtimes[4])/5;
+    ofstream endline("saidas.txt",ios::app);
+    endline << "Médias: " << compMedia << "," << movMedia << "," << runMedia << endl << endl;
+    endline.close();
 }
 
 void execQuickSortBenchmark(int nData) {
     DataReader reader;
-        int comps[5];
-        int movs[5];
-        double runtimes[5];
-        Sorts sort;
-        vector<CovidData> data;
+    int comps[5];
+    int movs[5];
+    double runtimes[5];
+    Sorts sort;
+    vector<CovidData> data;
 
-        ofstream intro("saidas.txt",ios::app);
-        intro << "Quick Sort - N: " << nData << endl;
-        intro << "Comparações,Movimentos,Tempo de execução" << endl;
-        data = reader.readPreProcessedCovidDataFromFile("brazil_covid19_cities_processado.csv");
-        intro.close();
+    ofstream intro("saidas.txt",ios::app);
+    intro << "Quick Sort - N: " << nData << endl;
+    intro << "Comparações,Movimentos,Tempo de execução" << endl;
+    data = reader.readPreProcessedCovidDataFromFile("brazil_covid19_cities_processado.csv");
+    intro.close();
 
-        for(int i = 0; i < 5; i++)
+    for(int i = 0; i < 5; i++)
+    {
+        srand(i);
+        Benchmark *bench = new Benchmark(nData,data.size());
+        vector<CovidData> benchData;
+        for(int j = 0; j < bench->getRandomDataIndex().size();j++)
         {
-            srand(i);
-            Benchmark *bench = new Benchmark(nData,data.size());
-            vector<CovidData> benchData;
-            for(int j = 0; j < bench->getRandomDataIndex().size();i++)
-            {
-                benchData.push_back(data[bench->getRandomDataIndex()[j]]);
-            }
-            bench->setStartTimeAsNow();
-            sort.benchmarkQuickSortCovidData(benchData,0,benchData.size(),bench);
-            bench->setEndTimeAsNow();
-            bench->generateRuntime();
-            reader.exportBenchmarkDataToFile(bench);
-
-            comps[i] = bench->getCompNumber();
-            movs[i] = bench->getMovNumber();
-            runtimes[i] = bench->getRuntime();
-            delete bench;
+            benchData.push_back(data[bench->getRandomDataIndex()[j]]);
         }
-        float compMedia = (comps[0] + comps[1] + comps[2] + comps[3] + comps[4])/5;
-        float movMedia = (movs[0] + movs[1] + movs[2] + movs[3] + movs[4])/5;
-        double runMedia = (runtimes[0] + runtimes[1] + runtimes[2] + runtimes[3] + runtimes[4])/5;
-        ofstream endline("saidas.txt",ios::app);
-        endline << "Médias: " << compMedia << "," << movMedia << "," << runMedia << endl << endl;
-        endline.close();
+        bench->setStartTimeAsNow();
+        sort.benchmarkQuickSortCovidData(benchData,0,benchData.size(),bench);
+        bench->setEndTimeAsNow();
+        bench->generateRuntime();
+        reader.exportBenchmarkDataToFile(bench);
+
+        comps[i] = bench->getCompNumber();
+        movs[i] = bench->getMovNumber();
+        runtimes[i] = bench->getRuntime();
+        delete bench;
+    }
+    float compMedia = (comps[0] + comps[1] + comps[2] + comps[3] + comps[4])/5;
+    float movMedia = (movs[0] + movs[1] + movs[2] + movs[3] + movs[4])/5;
+    double runMedia = (runtimes[0] + runtimes[1] + runtimes[2] + runtimes[3] + runtimes[4])/5;
+    ofstream endline("saidas.txt",ios::app);
+    endline << "Médias: " << compMedia << "," << movMedia << "," << runMedia << endl << endl;
+    endline.close();
 }
 
 
@@ -248,7 +248,7 @@ int main(int argc,char const *argv[])
     }
     else if(atoi(argv[1]) == 1)
     {
-        
+        execMergeSortBenchmark(10000);   
     }
     else
     {
