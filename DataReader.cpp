@@ -111,6 +111,6 @@ vector<CovidData> DataReader::readPreProcessedCovidDataFromFile(string filename)
     ofstream outfile("saidas.txt",ios::app);
     outfile << "Número de comparações: " << bench->getCompNumber() << endl;
     outfile << "Número de Movimentos: " << bench->getMovNumber() << endl;
-    outfile << "Tempo de execução: " << fixed << bench->getRuntime() << setprecision(9) << endl;
+    outfile << "Tempo de execução: " << bench->getRuntime() << endl;
     outfile.close();  
  }

@@ -95,5 +95,5 @@ void Benchmark::setEndTimeAsNow()
 
 void Benchmark::generateRuntime()
 {
-    this->runtime = chrono::duration_cast<chrono::nanoseconds>(this->endTime - this->startTime).count()*1e-9;
+    this->runtime = chrono::duration_cast<chrono::milliseconds>(this->endTime - this->startTime).count();
 }

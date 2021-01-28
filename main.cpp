@@ -1,4 +1,5 @@
 #include <iostream>
+#include<time.h>
 #include <string>
 #include <vector>
 #include <bits/stdc++.h> 
@@ -58,13 +59,14 @@ int main()
                 bench->setStartTimeAsNow();
                 sort.benchmarkMergeSortCovidData(benchmarkData,0,benchmarkData.size(),bench);
                 bench->setEndTimeAsNow();
+                bench->generateRuntime();
                 for(int i = 0; i < benchmarkData.size();i++)
                 {
                     cout << benchmarkData[i].getDate() << "," << benchmarkData[i].getStateInitials() << "," << benchmarkData[i].getCityName() << "," << benchmarkData[i].getCityCode() << "," << benchmarkData[i].getCaseCount() << "," << benchmarkData[i].getDeathCount() << endl;
                 }
                 cout << "Número de comparações: " << bench->getCompNumber() << endl;
                 cout << "Número de Movimentos: " << bench->getMovNumber() << endl;
-                cout << "Tempo de execução: " << fixed << bench->getRuntime() << setprecision(9) << endl;
+                cout << "Tempo de execução: " << bench->getRuntime() << endl;
                 delete bench;
                 break;
             
@@ -80,6 +82,7 @@ int main()
                 bench->setStartTimeAsNow();
                 sort.benchmarkMergeSortCovidData(benchmarkData,0,benchmarkData.size(),bench);
                 bench->setEndTimeAsNow();
+                bench->generateRuntime();
                 reader.exportTestedDataToFile(benchmarkData);
                 reader.exportBenchmarkDataToFile(bench);
                 delete bench;
@@ -109,13 +112,14 @@ int main()
                 bench->setStartTimeAsNow();
                 sort.benchmarkQuickSortCovidData(benchmarkData,0,benchmarkData.size() - 1,bench);
                 bench->setEndTimeAsNow();
+                bench->generateRuntime();
                 for(int i = 0; i < benchmarkData.size();i++)
                 {
                     cout << benchmarkData[i].getDate() << "," << benchmarkData[i].getStateInitials() << "," << benchmarkData[i].getCityName() << "," << benchmarkData[i].getCityCode() << "," << benchmarkData[i].getCaseCount() << "," << benchmarkData[i].getDeathCount() << endl;
                 }
                 cout << "Número de comparações: " << bench->getCompNumber() << endl;
                 cout << "Número de Movimentos: " << bench->getMovNumber() << endl;
-                cout << "Tempo de execução: " << fixed << bench->getRuntime() << setprecision(9) << endl;
+                cout << "Tempo de execução: " << bench->getRuntime() << endl;
                 delete bench;
                 break;
             
@@ -131,6 +135,7 @@ int main()
                 bench->setStartTimeAsNow();
                 sort.benchmarkQuickSortCovidData(benchmarkData,0,benchmarkData.size() - 1,bench);
                 bench->setEndTimeAsNow();
+                bench->generateRuntime();
                 reader.exportTestedDataToFile(benchmarkData);
                 reader.exportBenchmarkDataToFile(bench);
                 delete bench;
