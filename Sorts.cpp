@@ -126,6 +126,7 @@ void Sorts::convertCumulativeToDiary(vector<CovidData> &data)
 
 void Sorts::preProcessCovidData(vector<CovidData> &data)
 {
+<<<<<<< HEAD
     mergeSortCovidDatabyDate(data, 0, data.size() - 1);
     mergeSortCovidDatabyCityStatePair(data, 0, data.size() - 1);
     convertCumulativeToDiary(data);
@@ -133,14 +134,28 @@ void Sorts::preProcessCovidData(vector<CovidData> &data)
 
 // Merge Sort pós processamento
 void Sorts::merge(vector<CovidData> &data, int init, int mid, int end )
+=======
+    mergeSortCovidDatabyDate(data,0,data.size());
+    mergeSortCovidDatabyCityStatePair(data,0,data.size());
+    convertCumulativeToDiary(data);
+}
+
+void Sorts::auxBenchmarkMergeSortCovidData(vector<CovidData> &data, int init, int mid, int end, Benchmark *bench)
+>>>>>>> rodrigo
 {
     int i = init;
     int j = mid;
     vector<CovidData> aux;
 
+<<<<<<< HEAD
     while (i < mid && j < end)
     {
         if (data[i].getCaseCount() < data[j].getCaseCount())
+=======
+    while(i < mid && j < end)
+    {
+        if(data[i].getCaseCount() < data[j].getCaseCount())
+>>>>>>> rodrigo
         {
             aux.push_back(data[i]);
             i++;
@@ -149,7 +164,9 @@ void Sorts::merge(vector<CovidData> &data, int init, int mid, int end )
         {
             aux.push_back(data[j]);
             j++;
+            bench->incrementMovNumber();
         }
+        bench->incrementCompNumber();
     }
 
     while (i < mid)
@@ -162,23 +179,66 @@ void Sorts::merge(vector<CovidData> &data, int init, int mid, int end )
         aux.push_back(data[j]);
         j++;
     }
-
-    for (int k = init; k < end; k++)
+    
+    for(int k = init; k < end;k++)
     {
         data[k] = aux[k - init];
     }
 }
 
-void Sorts::mergeSort(vector<CovidData> &data, int init, int end)
+void Sorts::benchmarkMergeSortCovidData(vector<CovidData> &data, int init, int end, Benchmark *bench)
 {
-    if (init < end - 1)
+    if(init < end - 1)
     {
-        int mid = (init + end) / 2;
-        mergeSort(data, init, mid);
-        mergeSort(data, mid, end);
-        merge(data, init, mid, end);
+        int mid = (init + end)/2;
+        benchmarkMergeSortCovidData(data,init,mid,bench);
+        benchmarkMergeSortCovidData(data,mid,end,bench);
+        auxBenchmarkMergeSortCovidData(data,init,mid,end,bench);
     }
 }
 
+int Sorts::auxBenchmarkQuickSortCovidData(vector<CovidData> &data,int init, int end, Benchmark *bench)
+{
+    int i = init;
+    int j = end;
+    int pivot = data[(init + end)/2].getCaseCount();
 
-//}
+    do
+    {
+        bench->incrementCompNumber();
+        while(data[i].getCaseCount() < pivot)
+        {
+            i++;
+            bench->incrementCompNumber();
+        }
+
+        bench->incrementCompNumber();
+        while(data[j].getCaseCount() > pivot)
+        {
+            j--;
+            bench->incrementCompNumber();
+        }
+
+        if(i <= j)
+        {
+            swap(data[i],data[j]);
+            bench->incrementMovNumber();
+            i++;
+            j--;
+        }
+
+    }while (i <= j);
+
+    return i;
+    
+}
+
+void Sorts::benchmarkQuickSortCovidData(vector<CovidData> &data, int init, int end, Benchmark *bench)
+{
+    if(end - init > 0)
+    {
+        int mid = auxBenchmarkQuickSortCovidData(data,init,end,bench);
+        benchmarkQuickSortCovidData(data,init,mid - 1,bench);
+        benchmarkQuickSortCovidData(data,mid,end,bench);
+    }
+}

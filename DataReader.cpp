@@ -56,5 +56,61 @@ void DataReader::exportPreProcessedCovidDataToFile(vector<CovidData> &data)
     outfile.close();
 }
 
+vector<CovidData> DataReader::readPreProcessedCovidDataFromFile(string filename)
+{
+    ifstream file;
+    string line;
+    vector<CovidData> data;
+    
+    file.open(filename);
+    if(file.is_open())
+    {
+        while(getline(file,line))
+        {
+            if(line == "")
+            {
+                continue;
+            }
+            else
+            {
+                istringstream dataFromLine(line);
+                string date,stateInitials,cityName,cityCode,caseCount,deathCount;
+                getline(dataFromLine,date,',');
+                getline(dataFromLine,stateInitials,',');
+                getline(dataFromLine,cityName,',');
+                getline(dataFromLine,cityCode,',');
+                getline(dataFromLine,caseCount,',');
+                getline(dataFromLine,deathCount,',');
+                CovidData element;
+                element.setData(date,stateInitials,cityName,cityCode,atoi(caseCount.c_str()),atoi(deathCount.c_str()));
+                data.push_back(element);    
+            }
+        }
+        file.close();
+    }
+    else
+    {
+        cout << "Arquivo não aberto, retornando vector vazio!" << endl;
+    }
 
+    return data;
+}
 
+ void DataReader::exportTestedDataToFile(vector<CovidData> &data)
+ {
+    ofstream outfile("saidas.txt",ios::app);
+    for(int i = 0;i < data.size();i++)
+    {
+        outfile << data[i].getDate() << "," << data[i].getStateInitials() << "," << data[i].getCityName() << "," << data[i].getCityCode() << "," << data[i].getCaseCount() << "," << data[i].getDeathCount() << endl;
+    }
+    outfile.close();
+ }
+
+ void DataReader::exportBenchmarkDataToFile(Benchmark *bench)
+ {
+    ofstream outfile("saidas.txt",ios::app);
+    outfile << "Número de comparações: " << bench->getCompNumber() << endl;
+    outfile << "Número de Movimentos: " << bench->getMovNumber() << endl;
+    outfile << "Tempo de execução: " << bench->getRuntime() << endl;
+    outfile.close();  
+ }

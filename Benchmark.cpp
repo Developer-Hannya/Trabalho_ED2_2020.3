@@ -1,146 +1,99 @@
 #include "Benchmark.h"
-#include "Sorts.h"
-#include "DataReader.h"
 
-Benchmark::Benchmark() {
- 
-  double time_taken = 0;
-  double compNum = 0;
-  double movNum = 0;
-
-  double mediaRuntime = 0;
-  double mediaComp = 0;
-  double mediaMov = 0;
-  
-}
-
-Benchmark::~Benchmark() {}
-
-void Benchmark::exec() {
-  vector<CovidData> data;
-  vector<CovidData> extractedData;
-  vector<double> runtime;
-  DataReader reader;
-  string fileName;
-
-  cout << "Digite o nome e/ou caminho do do arquivo a ser lido: ";
-  cin >> fileName;
-  cout << "Lendo arquivo..." << endl;
-  data = reader.readCovidDatafromFile(fileName);
-  cout << "Executando benchmark..." << endl;
-
-  mergeSortBenchmark(data, extractedData, 100, runtime);
-  mergeSortBenchmark(data, extractedData, 500, runtime);
-  mergeSortBenchmark(data, extractedData, 1000, runtime);
-
-  calculaMedias(runtime);
-  exportMetricsToTxt(runtime);
-}
-
-void Benchmark::exportExtractedCovidDataToFile(vector<CovidData> &data, vector<CovidData> &extractedData)
+Benchmark::Benchmark(int n, int dataSize)
 {
-    ofstream outfile("brazil_covid19_cities_extracted.csv");
-    for(int i = 0;i < extractedData.size();i++)
+    this->compNumber = 0;
+    this->movNumber = 0;
+    this->runtime = 0;
+    for(int i = 0;i < n;i++)
     {
-        outfile << extractedData[i].getDate() << "," << extractedData[i].getStateInitials() << "," << extractedData[i].getCityName() << "," << extractedData[i].getCityCode() << "," << extractedData[i].getCaseCount() << "," << extractedData[i].getDeathCount() << endl;
+        this->randomDataIndex.push_back(rand() % dataSize);   
     }
-    outfile.close();
 }
 
-void Benchmark::mergeSortBenchmark(vector<CovidData> &data, vector<CovidData> &extractedData, int n, vector<double> &runtime)
+Benchmark::~Benchmark(){}
+
+int Benchmark::getCompNumber()
 {
-   Sorts sort;
-    // n = {10k, 50k, 100k, 500k, 1kk}
-    extractedData = extractNfromFile(data, extractedData, n);
-
-    auto start = chrono::high_resolution_clock::now();
-    sort.mergeSort(extractedData, 0, extractedData.size() -1);
-    auto end = chrono::high_resolution_clock::now();
-    setTimeTaken((chrono::duration_cast<chrono::milliseconds>(end - start).count())* 1e-9);
-    cout << "O tempo de execução do MergeSort para N = " << extractedData.size() -1 << "é de: " << fixed
-         << getTimeTaken() << setprecision(9);
-    cout << " seg" << endl;
-    exportExtractedCovidDataToFile(data, extractedData);
-    runtime.push_back(getTimeTaken());
+    return this->compNumber;
 }
 
- vector<CovidData> Benchmark::extractNfromFile(vector<CovidData> &data, vector<CovidData> &extractedData, int n){
-    int index; 
-    for (int i =0; i < n; i++) {
-        index = rand() % (data.size() + 1 - 0) + 0;
-        extractedData.push_back( data[index]);
-    }
-
-    return extractedData;
- }
-
-void Benchmark:: calculaMedias(vector<double> runtime) {
-  double t;
-  
-  for (int i = 0; i < runtime.size(); i++) {
-    t = runtime[i];
-  }
-
-  setMediaRuntime(t/runtime.size());
-
-} 
-
-void Benchmark::exportMetricsToTxt(vector<double> runtime) {
- 
-  ofstream outfile("saidas.txt");
-  for (int i=0; i < runtime.size(); i++) {
-    outfile << "Tempo exec nº " << i << ": " << runtime[i] << endl;
-  }
-  outfile << getMediaRuntime() << endl;
-
-  outfile.close();
-
+int Benchmark::getMovNumber()
+{
+    return this->movNumber;
 }
 
-double Benchmark::getTimeTaken() {
-  return this->time_taken;
+chrono::time_point<chrono::high_resolution_clock> Benchmark::getStartTime()
+{
+    return this->startTime;
 }
 
-void Benchmark::setTimeTaken(double time_taken) {
-  this->time_taken = time_taken;
+chrono::time_point<chrono::high_resolution_clock> Benchmark::getEndTime()
+{
+    return this->endTime;
 }
 
-double Benchmark::getCompNum() {
-    return this->compNum;
-  }
-
-void Benchmark::setCompNum(double compNum) {
-    this->compNum = compNum;
-  }
-
-double Benchmark::getMovNum() {
-   return this->movNum;
-  }
-
-void Benchmark::setMovNum(double movNum) {
-  this->movNum = movNum;
+double Benchmark::getRuntime()
+{
+    return this->runtime;
 }
 
-double Benchmark::getMediaRuntime() {
-  return this->mediaRuntime;
+vector<int> Benchmark::getRandomDataIndex()
+{
+    return this->randomDataIndex;
 }
 
-void Benchmark::setMediaRuntime(double mediaRuntime){
-  this->mediaRuntime = mediaRuntime;
+void Benchmark::setCompNumber(int compNumber)
+{
+    this->compNumber = compNumber;
 }
 
-double Benchmark::getMediaComp(){
-  return this->mediaComp;
+void Benchmark::setMovNumber(int movNumber)
+{
+    this->movNumber = movNumber;
 }
 
-void Benchmark::setMediaComp(double mediaComp){
-  this->mediaComp = mediaComp;
+void Benchmark::setStartTime(chrono::time_point<chrono::high_resolution_clock> startTime)
+{
+    this->startTime = startTime;
 }
 
-double Benchmark::getMediaMov(){
-  return this->mediaMov;
+void Benchmark::setEndTime(chrono::time_point<chrono::high_resolution_clock> endTime)
+{
+    this->endTime = endTime;
 }
-  
-void Benchmark::setMediaMov(double mediaMov){
-  this->mediaMov = mediaMov;
+
+void Benchmark::setRuntime(double runtime)
+{
+    this->runtime = runtime;
+}
+
+void Benchmark::setRandomDataIndex(vector<int> randomDataIndex)
+{
+    this->randomDataIndex = randomDataIndex;
+}
+
+void Benchmark::incrementCompNumber()
+{
+    this->compNumber++;
+}
+
+void Benchmark::incrementMovNumber()
+{
+    this->movNumber++;
+}
+
+void Benchmark::setStartTimeAsNow()
+{
+    this->startTime = chrono::high_resolution_clock::now();
+}
+
+void Benchmark::setEndTimeAsNow()
+{
+    this->endTime = chrono::high_resolution_clock::now();
+}
+
+void Benchmark::generateRuntime()
+{
+    this->runtime = chrono::duration_cast<chrono::milliseconds>(this->endTime - this->startTime).count();
 }

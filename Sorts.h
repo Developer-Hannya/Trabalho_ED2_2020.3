@@ -4,9 +4,7 @@
 #include <iostream>
 #include <vector>
 #include "CovidData.h"
-#include <chrono>
-#include <bits/stdc++.h> 
-#include <cstdlib>
+#include "Benchmark.h"
 
 //Classe com as funções de ordenação de dados
 class Sorts
@@ -65,9 +63,34 @@ private:
     */
     void convertCumulativeToDiary(vector<CovidData> &data);
 
+<<<<<<< HEAD
    
     
     
+=======
+    /**
+     * Função auxiliar do merge sort de número de casos do Benchmark
+     * 
+     * @param vector<CovidData> data
+     * @param int init
+     * @param int mid
+     * @param int end
+     * @param Benchmark* bench
+     * @return void
+    */
+    void auxBenchmarkMergeSortCovidData(vector<CovidData> &data, int init, int mid, int end, Benchmark *bench);
+
+    /**
+     * Função auxiliar do quick sort de número de casos do Benchmark
+     * 
+     * @param vector<CovidData> data
+     * @param int init
+     * @param int end
+     * @param Benchmark* bench
+     * @return void
+    */
+    int auxBenchmarkQuickSortCovidData(vector<CovidData> &data,int init, int end, Benchmark *bench);
+>>>>>>> rodrigo
 
 public:
     /**
@@ -91,6 +114,7 @@ public:
     void preProcessCovidData(vector<CovidData> &data);
 
     /**
+<<<<<<< HEAD
      * Função que calcula o tempo de execução do mergeSort
      * @return auto
     */
@@ -109,15 +133,36 @@ public:
     /**
      * Função recursiva do algoritmo MergeSort pós-processamento, que ordena M vezes um conjunto de N linhas do arquivo 
      * brazil_covid19_cities_processado utilizando como chave de ordenação o numero de casos.
+=======
+     * Um merge sort que ordena o número de casos em ordem crescente e também coleta os dados de comparações e movimentos
      * 
      * @param vector<CovidData> data
      * @param int init
      * @param int end
+     * @param Benchmark* bench
+     * @return void
+    */
+    void benchmarkMergeSortCovidData(vector<CovidData> &data, int init, int end, Benchmark *bench);
+
+    /**
+     * Um quick sort que ordena o número de casos em ordem crescente e também coleta os dados de comparações e movimentos
+>>>>>>> rodrigo
+     * 
+     * @param vector<CovidData> data
+     * @param int init
+     * @param int end
+<<<<<<< HEAD
      * @return void
     */
    void mergeSort(vector<CovidData> &data, int init, int end);
 //
    
+=======
+     * @param Benchmark* bench
+     * @return void
+    */
+    void benchmarkQuickSortCovidData(vector<CovidData> &data, int init, int end, Benchmark *bench);
+>>>>>>> rodrigo
 };
 
 #endif
