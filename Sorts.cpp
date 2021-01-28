@@ -125,8 +125,8 @@ void Sorts::convertCumulativeToDiary(vector<CovidData> &data)
 
 void Sorts::preProcessCovidData(vector<CovidData> &data)
 {
-    mergeSortCovidDatabyDate(data,0,data.size() - 1);
-    mergeSortCovidDatabyCityStatePair(data,0,data.size() - 1);
+    mergeSortCovidDatabyDate(data,0,data.size());
+    mergeSortCovidDatabyCityStatePair(data,0,data.size());
     convertCumulativeToDiary(data);
 }
 
