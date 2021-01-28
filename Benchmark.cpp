@@ -56,7 +56,7 @@ void Benchmark::mergeSortBenchmark(vector<CovidData> &data, vector<CovidData> &e
     auto start = chrono::high_resolution_clock::now();
     sort.mergeSort(extractedData, 0, extractedData.size() -1);
     auto end = chrono::high_resolution_clock::now();
-    setTimeTaken((chrono::duration_cast<chrono::nanoseconds>(end - start).count())* 1e-9);
+    setTimeTaken((chrono::duration_cast<chrono::milliseconds>(end - start).count())* 1e-9);
     cout << "O tempo de execução do MergeSort para N = " << extractedData.size() -1 << "é de: " << fixed
          << getTimeTaken() << setprecision(9);
     cout << " seg" << endl;
