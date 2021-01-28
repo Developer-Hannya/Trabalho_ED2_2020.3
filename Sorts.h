@@ -63,11 +63,6 @@ private:
     */
     void convertCumulativeToDiary(vector<CovidData> &data);
 
-<<<<<<< HEAD
-   
-    
-    
-=======
     /**
      * Função auxiliar do merge sort de número de casos do Benchmark
      * 
@@ -90,7 +85,6 @@ private:
      * @return void
     */
     int auxBenchmarkQuickSortCovidData(vector<CovidData> &data,int init, int end, Benchmark *bench);
->>>>>>> rodrigo
 
 public:
     /**
@@ -114,26 +108,6 @@ public:
     void preProcessCovidData(vector<CovidData> &data);
 
     /**
-<<<<<<< HEAD
-     * Função que calcula o tempo de execução do mergeSort
-     * @return auto
-    */
-   
-    /**
-     * Função de intercalação para o algoritmo MergeSort
-     * 
-     * @param vector<CovidData> data
-     * @param int init
-     * @param int mid
-     * @param int end
-     * @return void
-    */
-   void merge (vector<CovidData> &data, int init, int mid, int end);
-
-    /**
-     * Função recursiva do algoritmo MergeSort pós-processamento, que ordena M vezes um conjunto de N linhas do arquivo 
-     * brazil_covid19_cities_processado utilizando como chave de ordenação o numero de casos.
-=======
      * Um merge sort que ordena o número de casos em ordem crescente e também coleta os dados de comparações e movimentos
      * 
      * @param vector<CovidData> data
@@ -146,23 +120,14 @@ public:
 
     /**
      * Um quick sort que ordena o número de casos em ordem crescente e também coleta os dados de comparações e movimentos
->>>>>>> rodrigo
      * 
      * @param vector<CovidData> data
      * @param int init
      * @param int end
-<<<<<<< HEAD
-     * @return void
-    */
-   void mergeSort(vector<CovidData> &data, int init, int end);
-//
-   
-=======
      * @param Benchmark* bench
      * @return void
     */
     void benchmarkQuickSortCovidData(vector<CovidData> &data, int init, int end, Benchmark *bench);
->>>>>>> rodrigo
 };
 
 #endif

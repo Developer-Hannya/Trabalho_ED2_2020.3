@@ -4,7 +4,7 @@
 #include "CovidData.h"
 #include "Sorts.h"
 #include "DataReader.h"
-
+#include "Benchmark.h"
 using namespace std;
 
 void execMergeSortBenchmark(int nData) {
