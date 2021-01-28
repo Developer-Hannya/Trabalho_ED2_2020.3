@@ -1,9 +1,6 @@
 #include <iostream>
-#include<time.h>
 #include <string>
 #include <vector>
-#include <bits/stdc++.h> 
-#include <cstdlib>
 #include "CovidData.h"
 #include "Sorts.h"
 #include "DataReader.h"
