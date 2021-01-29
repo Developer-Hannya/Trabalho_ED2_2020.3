@@ -97,3 +97,13 @@ void Benchmark::generateRuntime()
 {
     this->runtime = chrono::duration_cast<chrono::milliseconds>(this->endTime - this->startTime).count();
 }
+
+int Benchmark::getRandomIndexVectorSize()
+{
+    return this->randomDataIndex.size();
+}
+
+int Benchmark::getRandomIndexFromVector(int index)
+{
+    return this->randomDataIndex[index];
+}

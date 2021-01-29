@@ -149,6 +149,10 @@ public:
      * @return void
     */
     void generateRuntime();
+
+    int getRandomIndexVectorSize();
+
+    int getRandomIndexFromVector(int index);
 };
 
 #endif

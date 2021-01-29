@@ -128,6 +128,8 @@ public:
      * @return void
     */
     void benchmarkQuickSortCovidData(vector<CovidData> &data, int init, int end, Benchmark *bench);
+
+    void benchmarkCountingSortCovidData(vector<CovidData> &data, Benchmark *bench);
 };
 
 #endif
