@@ -150,8 +150,18 @@ public:
     */
     void generateRuntime();
 
+    /**
+     * Retorna o tamanho do vector de chaves aleatórias
+     * 
+     * @return int
+    */
     int getRandomIndexVectorSize();
 
+    /**
+     * Retorna uma chaves aleatória indicada pelo índice do parâmetro
+     * 
+     * @return int
+    */
     int getRandomIndexFromVector(int index);
 };
 

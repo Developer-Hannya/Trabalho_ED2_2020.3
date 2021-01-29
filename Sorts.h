@@ -129,6 +129,14 @@ public:
     */
     void benchmarkQuickSortCovidData(vector<CovidData> &data, int init, int end, Benchmark *bench);
 
+    /**
+     * Um Counting Sort que ordena o número de casos em ordem cresente e também coleta os dados de número de movimentos, 
+     * já que o número de comparações desse algoritmo é sempre 0
+     * 
+     * @param vector<CovidData> data
+     * @param Benchmark* bench
+     * @return void
+    */
     void benchmarkCountingSortCovidData(vector<CovidData> &data, Benchmark *bench);
 };
 

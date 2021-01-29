@@ -1,3 +1,4 @@
+#include <iomanip>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -48,7 +49,7 @@ void execMergeSortBenchmark(int nData) {
     float movMedia = (movs[0] + movs[1] + movs[2] + movs[3] + movs[4])/5;
     double runMedia = (runtimes[0] + runtimes[1] + runtimes[2] + runtimes[3] + runtimes[4])/5;
     ofstream endline("saidas.txt",ios::app);
-    endline << "Médias: " << compMedia << "," << movMedia << "," << runMedia << endl << endl;
+    endline << "Médias: " << fixed << setprecision(2) << compMedia << "," << movMedia << "," << runMedia << endl << endl;
     endline.close();
 }
 
@@ -92,7 +93,7 @@ void execQuickSortBenchmark(int nData) {
     float movMedia = (movs[0] + movs[1] + movs[2] + movs[3] + movs[4])/5;
     double runMedia = (runtimes[0] + runtimes[1] + runtimes[2] + runtimes[3] + runtimes[4])/5;
     ofstream endline("saidas.txt",ios::app);
-    endline << "Médias: " << compMedia << "," << movMedia << "," << runMedia << endl << endl;
+    endline << "Médias: " << fixed << setprecision(2) << compMedia << "," << movMedia << "," << runMedia << endl << endl;
     endline.close();
 }
 
@@ -136,7 +137,7 @@ void execCountingSortBenchmark(int nData) {
     float movMedia = (movs[0] + movs[1] + movs[2] + movs[3] + movs[4])/5;
     double runMedia = (runtimes[0] + runtimes[1] + runtimes[2] + runtimes[3] + runtimes[4])/5;
     ofstream endline("saidas.txt",ios::app);
-    endline << "Médias: " << compMedia << "," << movMedia << "," << runMedia << endl << endl;
+    endline << "Médias: " << fixed << setprecision(2) << compMedia << "," << movMedia << "," << runMedia << endl << endl;
     endline.close();
 }
 
