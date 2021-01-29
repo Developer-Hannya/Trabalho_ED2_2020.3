@@ -1,5 +1,4 @@
 #include "Sorts.h"
-#include "Node.h"
 
 Sorts::Sorts(){}
 
@@ -131,90 +130,38 @@ void Sorts::preProcessCovidData(vector<CovidData> &data)
     convertCumulativeToDiary(data);
 }
 
-// aqui para baixo são as funções do Tree Sort
+// aqui para baixo são as funções do Counting Sort
 
-Node Sorts::newNode(vector<CovidData> &data){
-    Node *n = new Node;
-    n->chave = data;
-    n->left = n->rght = NULL;
-    return n;
-}
-
-/*
-void storeSorted(Node *root, int arr[], int &i) 
-{ 
-    if (root != NULL) 
-    { 
-        storeSorted(root->left, arr, i); 
-        arr[i++] = root->key; 
-        storeSorted(root->right, arr, i); 
-    } 
-} 
-*/
-
-void Sorts::storeTreeSorted(Node *raiz, vector<CovidData> &data, int n) {
-    if(raiz != NULL) {
-        storeTreeSorted(raiz->left, data, n);
-        vector<CovidData>[n++] = raiz->chave;
-        storeTreeSorted(raiz->rght, data, n);
-    }
-}
-
-/*
-    Node* insert(Node* node, int key) 
-    { 
-        /If the tree is empty, return a new Node
-        if (node == NULL) return newNode(key); 
-  
-        /Otherwise, recur down the tree 
-        if (key < node->key) 
-            node->left  = insert(node->left, key); 
-        else if (key > node->key) 
-            node->right = insert(node->right, key); 
-  
-        /return the (unchanged) Node pointer
-        return node; 
-    }    
-    */
-
-Node* Sorts::insertNode(Node* node, vector<CovidData> &data) {
-    if(node == NULL) {
-        return newNode(data);
-    }
-    else {
-        if(data < node->data) {
-            node->left = insertNode(node->left, data);
+void countSort(vector<CovidData> &data){
+    int ma = data[0].getCaseCount(), mi = data[0].getCaseCount();
+    for (int i = 0; i < data.size(); i++) {
+        if(data[i].getCaseCount() > ma) {
+            ma = data[i].getCaseCount();
         }
-        else if(data > node->data) {
-            node->rght = insertNode(node->rght, data);
+        if(data[i].getCaseCount() < mi) {
+            ma = data[i].getCaseCount();
         }
     }
-    return node;
-}
 
-/*
-void treeSort(int arr[], int n) 
-{ 
-    struct Node *root = NULL; 
-  
-    // Construct the BST 
-    root = insert(root, arr[0]); 
-    for (int i=1; i<n; i++) 
-        root = insert(root, arr[i]); 
-  
-    // Store inoder traversal of the BST 
-    // in arr[] 
-    int i = 0; 
-    storeSorted(root, arr, i); 
-} 
-*/
+    int *cont = new int [ma - mi + 1];
 
-void Sorts::treeSort(vector<CovidData> &data, int sizi) {
-    Node *raiz = NULL;
-    raiz = insertNode(raiz, data[0]);
-    for (int i = 1; i < sizi; i++) {
-        raiz = insertNode(raiz, data[i]);
+    for(int i = 0; i < data[i].getCaseCount() + 1; i++) {
+        cont[i] = 0;
     }
-    int j = 0;
-    storeTreeSorted(raiz, data, j);
+
+    for (int i = 0; i < data.size(); i++) {
+        cont[data[i].getCaseCount()]++;
+    }
+
+    for(int i = 1; cont[i] < data[i].getCaseCount() + 1; i++) {
+        cont[i] += cont[i - 1];
+    }
+    
+    vector<CovidData> ordem(data.size());
+    
+    for(int i = data.size(); i >= 0; i--) {
+        ordem[cont[data[i]] - 1] = data[i];
+        cont[data[i]]--;
+    }
+    // Output data: 1, 1, 2, 2, 4, 5, 7
 }

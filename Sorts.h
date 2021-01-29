@@ -4,7 +4,6 @@
 #include <iostream>
 #include <vector>
 #include "CovidData.h"
-#include "Node.h"
 
 //Classe com as funções de ordenação de dados
 class Sorts
@@ -63,11 +62,10 @@ private:
     */
     void convertCumulativeToDiary(vector<CovidData> &data);
 
-    // funcoes do Tree Sort
-    Node *newNode(vector<CovidData> &data);
-    void storeTreeSorted(Node *raiz, vector<CovidData> &data, int n);
-    Node* insertNode(Node* noh, vector<CovidData> &data);
-    void treeSort(vector<CovidData> &data, int sizi);    
+    // funcoes do Counting Sort
+    
+    void countSort(vector<CovidData> &data);
+       
 
 public:
     /**

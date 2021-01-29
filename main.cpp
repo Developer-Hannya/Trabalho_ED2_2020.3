@@ -4,7 +4,6 @@
 #include "CovidData.h"
 #include "Sorts.h"
 #include "DataReader.h"
-#include "Node.h"
 
 using namespace std;
 
